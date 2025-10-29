@@ -26,7 +26,7 @@ pnpm install
 pnpm dev
 ```
 
-## Stack Tecnológico
+## Stack
 
 ### Frontend
 - React 18
