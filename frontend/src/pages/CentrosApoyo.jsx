@@ -1,13 +1,62 @@
 import React, { useState } from 'react';
 import { MapPin, Phone, Clock, Navigation } from 'lucide-react';
-import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
+
+import icon from 'leaflet/dist/images/marker-icon.png';
+import iconShadow from 'leaflet/dist/images/marker-shadow.png';
+
+let DefaultIcon = L.icon({
+  iconUrl: icon,
+  shadowUrl: iconShadow,
+  iconSize: [25, 41],
+  iconAnchor: [12, 41]
+});
+
+L.Marker.prototype.options.icon = DefaultIcon;
+
+// para centrar el mapa cuando se selecciona un centro
+const MapController = ({ center, zoom }) => {
+  const map = useMap();
+  React.useEffect(() => {
+    if (center) {
+      map.setView(center, zoom);
+    }
+  }, [center, zoom, map]);
+  return null;
+};
 
 const CentrosApoyo = () => {
   const [selectedType, setSelectedType] = useState('todos');
   const [selectedCenter, setSelectedCenter] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
+  const [mapCenter, setMapCenter] = useState([19.4326, -99.1332]); // Centro de CDMX
 
-  // ejemplo
+  const publicoIcon = new L.Icon({
+    iconUrl: 'data:image/svg+xml;base64,' + btoa(`
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="#10b981" stroke="white" stroke-width="2">
+        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+        <circle cx="12" cy="10" r="3" fill="white"></circle>
+      </svg>
+    `),
+    iconSize: [32, 32],
+    iconAnchor: [16, 32],
+    popupAnchor: [0, -32]
+  });
+
+  const privadoIcon = new L.Icon({
+    iconUrl: 'data:image/svg+xml;base64,' + btoa(`
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="#3b82f6" stroke="white" stroke-width="2">
+        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+        <circle cx="12" cy="10" r="3" fill="white"></circle>
+      </svg>
+    `),
+    iconSize: [32, 32],
+    iconAnchor: [16, 32],
+    popupAnchor: [0, -32]
+  });
+
   const centros = [
     {
       id: 1,
@@ -17,7 +66,8 @@ const CentrosApoyo = () => {
       telefono: "55-1234-5678",
       horario: "Lun-Vie 9:00-18:00",
       servicios: ["Asesoría Legal", "Apoyo Psicológico", "Refugio Temporal"],
-      posicion: { x: 35, y: 25 },
+      lat: 19.3467,
+      lng: -99.1895,
       delegacion: "Álvaro Obregón"
     },
     {
@@ -28,7 +78,8 @@ const CentrosApoyo = () => {
       telefono: "55-2345-6789",
       horario: "24 horas",
       servicios: ["Atención Médica", "Asesoría Legal", "Denuncia"],
-      posicion: { x: 55, y: 40 },
+      lat: 19.4342,
+      lng: -99.1376,
       delegacion: "Cuauhtémoc"
     },
     {
@@ -39,7 +90,8 @@ const CentrosApoyo = () => {
       telefono: "55-3456-7890",
       horario: "Lun-Sab 10:00-20:00",
       servicios: ["Terapia Individual", "Grupos de Apoyo"],
-      posicion: { x: 25, y: 55 },
+      lat: 19.3544,
+      lng: -99.2245,
       delegacion: "Álvaro Obregón"
     },
     {
@@ -50,7 +102,8 @@ const CentrosApoyo = () => {
       telefono: "55-4567-8901",
       horario: "Lun-Vie 9:00-17:00",
       servicios: ["Orientación", "Capacitación", "Asesoría Legal"],
-      posicion: { x: 60, y: 30 },
+      lat: 19.4355,
+      lng: -99.1425,
       delegacion: "Cuauhtémoc"
     },
     {
@@ -61,7 +114,8 @@ const CentrosApoyo = () => {
       telefono: "55-5678-9012",
       horario: "Lun-Vie 8:00-16:00",
       servicios: ["Traducción", "Asesoría Cultural", "Apoyo Legal"],
-      posicion: { x: 58, y: 42 },
+      lat: 19.4326,
+      lng: -99.1311,
       delegacion: "Cuauhtémoc"
     },
     {
@@ -72,7 +126,8 @@ const CentrosApoyo = () => {
       telefono: "55-6789-0123",
       horario: "Lun-Vie 10:00-19:00",
       servicios: ["Talleres", "Apoyo Psicológico", "Asesoría"],
-      posicion: { x: 45, y: 65 },
+      lat: 19.3745,
+      lng: -99.1723,
       delegacion: "Benito Juárez"
     },
     {
@@ -83,7 +138,8 @@ const CentrosApoyo = () => {
       telefono: "800-822-4460",
       horario: "24 horas",
       servicios: ["Refugio", "Atención de Emergencia", "Asesoría"],
-      posicion: { x: 52, y: 48 },
+      lat: 19.4194,
+      lng: -99.1638,
       delegacion: "Cuauhtémoc"
     },
     {
@@ -94,7 +150,8 @@ const CentrosApoyo = () => {
       telefono: "55-7890-1234",
       horario: "Lun-Vie 9:00-18:00",
       servicios: ["Denuncia", "Atención Psicológica", "Trabajo Social"],
-      posicion: { x: 30, y: 35 },
+      lat: 19.4098,
+      lng: -99.2021,
       delegacion: "Miguel Hidalgo"
     },
     {
@@ -105,7 +162,8 @@ const CentrosApoyo = () => {
       telefono: "55-8901-2345",
       horario: "Lun-Jue 11:00-18:00",
       servicios: ["Grupos de Apoyo", "Talleres", "Asesoría"],
-      posicion: { x: 48, y: 28 },
+      lat: 19.4445,
+      lng: -99.1489,
       delegacion: "Cuauhtémoc"
     },
     {
@@ -116,7 +174,8 @@ const CentrosApoyo = () => {
       telefono: "55-5622-2222",
       horario: "Lun-Vie 8:00-20:00",
       servicios: ["Atención Psicológica", "Asesoría Legal", "Orientación"],
-      posicion: { x: 42, y: 75 },
+      lat: 19.3244,
+      lng: -99.1794,
       delegacion: "Coyoacán"
     },
     {
@@ -127,7 +186,8 @@ const CentrosApoyo = () => {
       telefono: "55-9012-3456",
       horario: "Lun-Vie 9:00-17:00",
       servicios: ["Asesoría Legal", "Trabajo Social", "Denuncia"],
-      posicion: { x: 72, y: 58 },
+      lat: 19.3565,
+      lng: -99.0641,
       delegacion: "Iztapalapa"
     },
     {
@@ -138,7 +198,8 @@ const CentrosApoyo = () => {
       telefono: "55-0123-4567",
       horario: "Lun-Vie 10:00-18:00",
       servicios: ["Capacitación", "Empoderamiento", "Asesoría"],
-      posicion: { x: 48, y: 58 },
+      lat: 19.3789,
+      lng: -99.1656,
       delegacion: "Benito Juárez"
     }
   ];
@@ -153,10 +214,7 @@ const CentrosApoyo = () => {
 
   const handleCenterClick = (centro) => {
     setSelectedCenter(centro);
-  };
-
-  const handleMapClick = () => {
-    setSelectedCenter(null);
+    setMapCenter([centro.lat, centro.lng]);
   };
 
   return (
@@ -164,11 +222,10 @@ const CentrosApoyo = () => {
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-col lg:flex-row gap-8">
           
-          {/* Panel Izquierdo - Filtros (Sticky) */}
+          {/* Panel Izquierdo */}
           <div className="lg:w-1/3 lg:sticky lg:top-8 h-fit">
             <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-xl">
               
-              {/* Punto decorativo naranja */}
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
                 <h1 className="text-4xl font-bold text-teal-700">
@@ -180,7 +237,6 @@ const CentrosApoyo = () => {
                 Encuentra centros de apoyo cerca de ti. Lugares seguros con atención especializada disponibles.
               </p>
 
-              {/* Búsqueda */}
               <div className="mb-6">
                 <input
                   type="text"
@@ -191,7 +247,6 @@ const CentrosApoyo = () => {
                 />
               </div>
 
-              {/* Filtros de tipo */}
               <div className="space-y-3">
                 <p className="text-sm font-semibold text-gray-700 mb-3">
                   FILTRAR POR TIPO
@@ -233,173 +288,147 @@ const CentrosApoyo = () => {
                 </button>
               </div>
 
-              {/* Contador */}
               <div className="mt-6 p-4 bg-teal-50 rounded-2xl">
                 <p className="text-sm text-teal-700">
                   <span className="font-bold">{centrosFiltrados.length}</span> centros disponibles
                 </p>
               </div>
 
-              {/* Información adicional */}
               <div className="mt-6 p-4 bg-orange-50 rounded-2xl">
                 <div className="flex items-start gap-2">
                   <div className="w-2 h-2 bg-orange-500 rounded-full mt-1.5"></div>
                   <p className="text-sm text-gray-700">
-                    <strong>Tip:</strong> Haz clic en cualquier punto del mapa para ver más información del centro.
+                    <strong>Tip:</strong> Haz clic en cualquier marcador del mapa para ver más información del centro.
                   </p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Panel Derecho - Mapa */}
+          {/* Panel Derecho */}
           <div className="lg:w-2/3">
             <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl overflow-hidden">
               
-              {/* Header del mapa */}
               <div className="bg-gradient-to-r from-teal-500 to-teal-600 text-white p-6">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <MapPin className="w-6 h-6" />
                     <h2 className="text-2xl font-bold">Mapa de Centros</h2>
                   </div>
-                  <button className="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-full transition-colors flex items-center gap-2">
-                    <Navigation className="w-4 h-4" />
-                    <span className="text-sm">Mi ubicación</span>
-                  </button>
                 </div>
               </div>
 
-              {/* Mapa con puntos */}
-              <div 
-                className="relative w-full h-[545px] bg-gradient-to-br from-gray-100 to-gray-200 cursor-pointer"
-                onClick={handleMapClick}
-              >
-                {/* "mapa"*/}
-                <svg className="absolute inset-0 w-full h-full opacity-20">
-                  <rect x="20%" y="15%" width="60%" height="2" fill="#94a3b8" />
-                  <rect x="40%" y="5%" width="2" height="90%" fill="#94a3b8" />
-                  <rect x="10%" y="40%" width="80%" height="2" fill="#94a3b8" />
-                  <rect x="70%" y="10%" width="2" height="80%" fill="#94a3b8" />
-                  <rect x="15%" y="60%" width="70%" height="2" fill="#94a3b8" />
-                  <rect x="25%" y="20%" width="2" height="60%" fill="#94a3b8" />
+              {/* Mapa de Leaflet */}
+              <div className="h-[545px]">
+                <MapContainer 
+                  center={mapCenter} 
+                  zoom={12} 
+                  style={{ height: '100%', width: '100%' }}
+                  scrollWheelZoom={true}
+                >
+                  <TileLayer
+                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                  />
                   
-                  {/* Bloques/manzanas */}
-                  <rect x="15%" y="20%" width="15%" height="15%" fill="#e2e8f0" rx="4" />
-                  <rect x="45%" y="25%" width="20%" height="12%" fill="#e2e8f0" rx="4" />
-                  <rect x="25%" y="45%" width="18%" height="20%" fill="#e2e8f0" rx="4" />
-                  <rect x="60%" y="50%" width="22%" height="18%" fill="#e2e8f0" rx="4" />
-                  <rect x="50%" y="70%" width="15%" height="15%" fill="#e2e8f0" rx="4" />
-                  <rect x="20%" y="70%" width="20%" height="12%" fill="#e2e8f0" rx="4" />
-                </svg>
-
-                {/* Marcadores de centros */}
-                {centrosFiltrados.map((centro) => (
-                  <button
-                    key={centro.id}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleCenterClick(centro);
-                    }}
-                    className={`absolute transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ${
-                      selectedCenter?.id === centro.id ? 'scale-150 z-20' : 'hover:scale-125 z-10'
-                    }`}
-                    style={{
-                      left: `${centro.posicion.x}%`,
-                      top: `${centro.posicion.y}%`
-                    }}
-                  >
-                    <div className="relative">
-                      {/* Pin del marcador */}
-                      <div className={`w-8 h-8 rounded-full shadow-lg flex items-center justify-center ${
-                        centro.tipo === 'publico' 
-                          ? 'bg-emerald-500 border-4 border-white' 
-                          : 'bg-blue-500 border-4 border-white'
-                      }`}>
-                        <MapPin className="w-4 h-4 text-white" />
-                      </div>
-                      
-                      {/* Pulso de animación */}
-                      {selectedCenter?.id === centro.id && (
-                        <div className={`absolute inset-0 rounded-full animate-ping ${
-                          centro.tipo === 'publico' ? 'bg-emerald-400' : 'bg-blue-400'
-                        }`}></div>
-                      )}
-                    </div>
-                  </button>
-                ))}
-
-                {/* Overlay de información cuando se selecciona un centro */}
-                {selectedCenter && (
-                  <div className="absolute bottom-4 left-4 right-4 bg-white rounded-2xl shadow-2xl p-6 z-30 animate-fade-in">
-                    <div className="flex justify-between items-start mb-4">
-                      <div className="flex items-start gap-3">
-                        <div className={`w-3 h-3 rounded-full mt-1.5 ${
-                          selectedCenter.tipo === 'publico' ? 'bg-emerald-500' : 'bg-blue-500'
-                        }`}></div>
-                        <div>
-                          <h3 className="text-xl font-bold text-gray-800">
-                            {selectedCenter.nombre}
-                          </h3>
-                          <p className="text-sm text-gray-500 capitalize">
-                            Centro {selectedCenter.tipo}
-                          </p>
+                  <MapController center={mapCenter} zoom={selectedCenter ? 15 : 12} />
+                  
+                  {centrosFiltrados.map((centro) => (
+                    <Marker 
+                      key={centro.id}
+                      position={[centro.lat, centro.lng]}
+                      icon={centro.tipo === 'publico' ? publicoIcon : privadoIcon}
+                      eventHandlers={{
+                        click: () => handleCenterClick(centro)
+                      }}
+                    >
+                      <Popup>
+                        <div className="p-2">
+                          <h3 className="font-bold text-gray-800 mb-2">{centro.nombre}</h3>
+                          <p className="text-sm text-gray-600 mb-1">{centro.direccion}</p>
+                          <p className="text-sm text-teal-600 font-medium">{centro.telefono}</p>
                         </div>
-                      </div>
-                      <button
-                        onClick={handleMapClick}
-                        className="text-gray-400 hover:text-gray-600 text-2xl leading-none"
-                      >
-                        ×
-                      </button>
-                    </div>
-
-                    <div className="space-y-3">
-                      <div className="flex items-start gap-3">
-                        <MapPin className="w-5 h-5 text-teal-600 mt-0.5 flex-shrink-0" />
-                        <div>
-                          <p className="text-sm text-gray-700">{selectedCenter.direccion}</p>
-                          <p className="text-xs text-gray-500">{selectedCenter.delegacion}</p>
-                        </div>
-                      </div>
-
-                      <div className="flex items-center gap-3">
-                        <Phone className="w-5 h-5 text-teal-600 flex-shrink-0" />
-                        <a 
-                          href={`tel:${selectedCenter.telefono}`}
-                          className="text-sm text-teal-600 hover:text-teal-700 font-medium"
-                        >
-                          {selectedCenter.telefono}
-                        </a>
-                      </div>
-
-                      <div className="flex items-center gap-3">
-                        <Clock className="w-5 h-5 text-teal-600 flex-shrink-0" />
-                        <p className="text-sm text-gray-700">{selectedCenter.horario}</p>
-                      </div>
-
-                      <div className="pt-3 border-t border-gray-200">
-                        <p className="text-xs font-semibold text-gray-600 mb-2">SERVICIOS:</p>
-                        <div className="flex flex-wrap gap-2">
-                          {selectedCenter.servicios.map((servicio, index) => (
-                            <span 
-                              key={index}
-                              className="text-xs px-3 py-1 bg-teal-50 text-teal-700 rounded-full"
-                            >
-                              {servicio}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-
-                      <button className="w-full mt-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white py-3 rounded-full hover:shadow-lg transition-all flex items-center justify-center gap-2">
-                        <Navigation className="w-4 h-4" />
-                        Cómo llegar
-                      </button>
-                    </div>
-                  </div>
-                )}
+                      </Popup>
+                    </Marker>
+                  ))}
+                </MapContainer>
               </div>
+
+              {/* Información del centro seleccionado */}
+              {selectedCenter && (
+                <div className="p-6 bg-white border-t border-gray-200">
+                  <div className="flex justify-between items-start mb-4">
+                    <div className="flex items-start gap-3">
+                      <div className={`w-3 h-3 rounded-full mt-1.5 ${
+                        selectedCenter.tipo === 'publico' ? 'bg-emerald-500' : 'bg-blue-500'
+                      }`}></div>
+                      <div>
+                        <h3 className="text-xl font-bold text-gray-800">
+                          {selectedCenter.nombre}
+                        </h3>
+                        <p className="text-sm text-gray-500 capitalize">
+                          Centro {selectedCenter.tipo}
+                        </p>
+                      </div>
+                    </div>
+                    <button
+                      onClick={() => setSelectedCenter(null)}
+                      className="text-gray-400 hover:text-gray-600 text-2xl leading-none"
+                    >
+                      ×
+                    </button>
+                  </div>
+
+                  <div className="space-y-3">
+                    <div className="flex items-start gap-3">
+                      <MapPin className="w-5 h-5 text-teal-600 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <p className="text-sm text-gray-700">{selectedCenter.direccion}</p>
+                        <p className="text-xs text-gray-500">{selectedCenter.delegacion}</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-3">
+                      <Phone className="w-5 h-5 text-teal-600 flex-shrink-0" />
+                      <a 
+                        href={`tel:${selectedCenter.telefono}`}
+                        className="text-sm text-teal-600 hover:text-teal-700 font-medium"
+                      >
+                        {selectedCenter.telefono}
+                      </a>
+                    </div>
+
+                    <div className="flex items-center gap-3">
+                      <Clock className="w-5 h-5 text-teal-600 flex-shrink-0" />
+                      <p className="text-sm text-gray-700">{selectedCenter.horario}</p>
+                    </div>
+
+                    <div className="pt-3 border-t border-gray-200">
+                      <p className="text-xs font-semibold text-gray-600 mb-2">SERVICIOS:</p>
+                      <div className="flex flex-wrap gap-2">
+                        {selectedCenter.servicios.map((servicio, index) => (
+                          <span 
+                            key={index}
+                            className="text-xs px-3 py-1 bg-teal-50 text-teal-700 rounded-full"
+                          >
+                            {servicio}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    
+                      href={`https://www.google.com/maps/dir/?api=1&destination=${selectedCenter.lat},${selectedCenter.lng}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block w-full mt-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white py-3 rounded-full hover:shadow-lg transition-all flex items-center justify-center gap-2"
+                    <a>
+                      <Navigation className="w-4 h-4" />
+                      Cómo llegar
+                    </a>
+                  </div>
+                </div>
+              )}
 
               {/* Leyenda del mapa */}
               <div className="p-6 bg-gray-50 border-t border-gray-200">
@@ -416,7 +445,38 @@ const CentrosApoyo = () => {
               </div>
             </div>
 
-            
+            {/* Lista de centros */}
+            <div className="mt-6 bg-white/90 backdrop-blur-sm rounded-3xl p-6 shadow-xl">
+              <h3 className="text-xl font-bold text-gray-800 mb-4">
+                Lista de Centros ({centrosFiltrados.length})
+              </h3>
+              <div className="space-y-3 max-h-96 overflow-y-auto">
+                {centrosFiltrados.map((centro) => (
+                  <button
+                    key={centro.id}
+                    onClick={() => handleCenterClick(centro)}
+                    className={`w-full text-left p-4 rounded-xl transition-all border-2 ${
+                      selectedCenter?.id === centro.id
+                        ? 'bg-teal-50 border-teal-500'
+                        : 'bg-white border-gray-200 hover:border-teal-300 hover:shadow-md'
+                    }`}
+                  >
+                    <div className="flex items-start gap-3">
+                      <div className={`w-3 h-3 rounded-full mt-1.5 flex-shrink-0 ${
+                        centro.tipo === 'publico' ? 'bg-emerald-500' : 'bg-blue-500'
+                      }`}></div>
+                      <div className="flex-1">
+                        <h4 className="font-semibold text-gray-800 mb-1">
+                          {centro.nombre}
+                        </h4>
+                        <p className="text-sm text-gray-600 mb-1">{centro.delegacion}</p>
+                        <p className="text-xs text-gray-500">{centro.telefono}</p>
+                      </div>
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
