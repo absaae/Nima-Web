@@ -25,18 +25,3 @@ cd backend
 pnpm install
 pnpm dev
 ```
-
-## Stack
-
-### Frontend
-- React 18
-- Vite
-- Tailwind CSS
-- React Router DOM
-- Lucide React (iconos)
-
-### Backend
-- Node.js
-- Express
-- MongoDB + Mongoose
-- JWT (próximamente)
