@@ -38,6 +38,11 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
+                <Link to="/about" className="hover:text-nima-pink transition-colors">
+                  ¿Quiénes Somos?
+                </Link>
+              </li>
+              <li>
                 <Link to="/recursos" className="hover:text-nima-pink transition-colors">
                   Recursos
                 </Link>

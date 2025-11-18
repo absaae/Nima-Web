@@ -1,9 +1,7 @@
-import { useState } from 'react';
 import { MessageCircle, FileText, MapPin, Scale, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
-  const [showAbout, setShowAbout] = useState(false);
 
   const scrollToServices = () => {
     const servicesSection = document.getElementById('servicios');
@@ -59,7 +57,7 @@ const Home = () => {
             {/* Botones */}
             <div className="w-full max-w-md space-y-4">
               <button 
-                onClick={() => setShowAbout(!showAbout)}
+                onClick={() => window.location.href = '/about'}
                 className="w-full bg-white text-nima-teal border-2 border-nima-teal py-4 px-6 rounded-full text-xl font-semibold hover:bg-nima-teal hover:text-white transition-all duration-300 shadow-lg"
               >
                 ¿Quienes somos?
@@ -113,7 +111,7 @@ const Home = () => {
 
             {/* Tarjeta 2 - Centros de apoyo */}
             <Link 
-              to="/CentrosApoyo"
+              to="/centrosapoyo"
               className="bg-gray-100 rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
             >
               <div className="flex flex-col items-center text-center space-y-4">
@@ -145,7 +143,7 @@ const Home = () => {
 
             {/* Tarjeta 4 - Directorio */}
             <Link 
-              to="/Directorio"
+              to="/directorio"
               className="bg-gray-100 rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
             >
               <div className="flex flex-col items-center text-center space-y-4">

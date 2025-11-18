@@ -61,6 +61,9 @@ const Header = () => {
             <Link to="/" className="text-gray-700 hover:text-nima-teal font-medium transition-colors">
               Inicio
             </Link>
+            <Link to="/about" className="text-gray-700 hover:text-nima-teal font-medium transition-colors">
+              ¿Quiénes Somos?
+            </Link>
             <Link to="/recursos" className="text-gray-700 hover:text-nima-teal font-medium transition-colors">
               Recursos
             </Link>
@@ -98,6 +101,13 @@ const Header = () => {
                 onClick={toggleMenu}
               >
                 Inicio
+              </Link>
+              <Link 
+                to="/about" 
+                className="text-gray-700 hover:text-nima-teal font-medium py-2 transition-colors"
+                onClick={toggleMenu}
+              >
+                Quiénes Somos
               </Link>
               <Link 
                 to="/recursos" 
