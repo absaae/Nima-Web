@@ -67,7 +67,7 @@ const Header = () => {
             <Link to="/directorio" className="text-gray-700 hover:text-nima-teal font-medium transition-colors">
               Directorio
             </Link>
-            <Link to="/CentrosApoyo" className="text-gray-700 hover:text-nima-teal font-medium transition-colors">
+            <Link to="/centrosapoyo" className="text-gray-700 hover:text-nima-teal font-medium transition-colors">
               Centros de Apoyo
             </Link>
             <Link 
@@ -114,7 +114,7 @@ const Header = () => {
                 Directorio
               </Link>
               <Link 
-                to="/centros" 
+                to="/centrosapoyo" 
                 className="text-gray-700 hover:text-nima-teal font-medium py-2 transition-colors"
                 onClick={toggleMenu}
               >
