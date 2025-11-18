@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Directorio from './pages/Directorio';
 import CentrosApoyo from './pages/CentrosApoyo';
 import Recursos from './pages/Recursos';
+import Chat from "./pages/Chat";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/Directorio" element={<Directorio />} />
           <Route path="/CentrosApoyo" element={<CentrosApoyo />} />
           <Route path="/Recursos" element={<Recursos />} />
+          <Route path='/Chat' element= {<Chat/>} />
         </Routes>
       </Layout>
     </Router>
