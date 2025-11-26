@@ -1,0 +1,107 @@
+{
+  "title": "Denuncias Digitales",
+  "description": "Información sobre qué delitos pueden denunciarse en línea y cuáles requieren denuncia presencial en la CDMX.",
+  "sections": [
+    {
+      "title": "Delitos que requieren denuncia presencial",
+      "content": "Lesiones físicas (golpes, heridas, quemaduras, laceraciones) o amenazas/agresiones con armas deben denunciarse presencialmente en una agencia del Ministerio Público o llamando al 911.",
+      "list": []
+    },
+    {
+      "title": "Delitos que sí puedes denunciar en línea",
+      "content": "",
+      "list": [
+        {
+          "title": "Delito contra la Intimidad Sexual",
+          "description": "Grabación, fotografía o difusión de imágenes o videos sexuales sin consentimiento."
+        },
+        {
+          "title": "Violencia Familiar",
+          "description": "Agresiones verbales, psicológicas, patrimoniales, económicas o sexuales dentro o fuera del hogar."
+        },
+        {
+          "title": "Delitos Patrimoniales",
+          "description": "",
+          "sublist": [
+            {
+              "title": "Abuso de confianza",
+              "description": "Alguien se adueñó de una pertenencia que fue prestada."
+            },
+            {
+              "title": "Administración fraudulenta",
+              "description": "Daño al patrimonio realizado por quien administra bienes con fines de lucro."
+            },
+            {
+              "title": "Daño a la propiedad",
+              "description": "Destrucción o daño intencional de pertenencias."
+            }
+          ]
+        },
+        {
+          "title": "Delitos contra bienestar, seguridad jurídica o dignidad",
+          "description": "",
+          "sublist": [
+            {
+              "title": "Discriminación",
+              "description": "Negación de derechos o violencia por raza, origen, idioma, religión, ideología, orientación sexual u otra categoría."
+            },
+            {
+              "title": "Sustracción de menores",
+              "description": "Retener, ocultar o sustraer a un menor sin tener derecho de custodia."
+            },
+            {
+              "title": "Incumplimiento de obligación alimentaria",
+              "description": "Alguien no cumple con su deber de otorgar alimentos."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Requisitos para denunciar",
+      "content": "Para denunciar debes aceptar el aviso de privacidad y acceder con Llave CDMX o e.firma del SAT.",
+      "list": [
+        "Identificación oficial (INE, Cédula Profesional, Licencia para conducir).",
+        "Correo electrónico.",
+        "Narración de los hechos."
+      ],
+      "links": [
+        {
+          "label": "Crear cuenta Llave CDMX",
+          "url": "https://llave.cdmx.gob.mx/RegistroCiudadano.xhtml?faces-redirect=true"
+        }
+      ]
+    },
+    {
+      "title": "Pasos para denunciar en línea",
+      "content": "",
+      "list": [
+        "Ingresar a https://denunciadigital.cdmx.gob.mx/",
+        "Validar datos generales y CURP.",
+        "Seleccionar denuncia, cita o constancia de extravío.",
+        "Llenar el formato correspondiente."
+      ]
+    }
+  ],
+  "links": [
+    {
+      "label": "Sitio de Denuncia Digital",
+      "url": "https://denunciadigital.cdmx.gob.mx/"
+    }
+  ],
+  "documents": [
+    {
+      "title": "Denuncia Digital - Información Oficial",
+      "description": "Consulta toda la información aquí",
+      "type": "Informacion",
+      "file": "/recursos/instrucciones/denunciaDigitalPDFS/DenunciaDigital1.pdf"
+    },
+    {
+      "title": "Pasos para realizar la denuncia digital",
+      "description": "Pasos para realizar la denuncia desde tu cuenta Llave CDMX",
+      "type": "Guía",
+       "file": "/recursos/instrucciones/denunciaDigitalPDFS/denunciaDigitalPasos.pdf"
+    }
+  ]
+
+}

@@ -1,0 +1,72 @@
+{
+  "title": "Instrumentos internacionales sobre derechos humanos de las mujeres",
+  "description": "Aquí puedes consultar los instrumentos de derecho relacionados con equidad y género. Puedes seleccionarlos para consultar más información.",
+  "sections": [
+    {
+      "title": "Instrumentos principales",
+      "content": "",
+      "list": [
+        {
+          "title": "IV Conferencia Mundial de la Mujer. Declaración de Beijing y Plataforma de Acción",
+          "type": "pdf",
+          "file": "/recursos/documentacionBasica/100073.pdf",
+          "description": "Consulta toda la información aquí."
+        },
+        {
+          "title": "Convención sobre la Eliminación de Todas las Formas de Discriminación contra la Mujer (CEDAW) y su Protocolo Facultativo",
+          "type": "link",
+          "url": "https://www.scjn.gob.mx/igualdad-de-genero/cedaw",
+          "description": "Consultar sitio oficial."
+        },
+        {
+          "title": "Convención Interamericana para Prevenir, Sancionar y Erradicar la Violencia contra la Mujer (Convención de Belém Do Pará)",
+          "type": "pdf",
+          "file": "/recursos/documentacionBasica/convencion_BelemdoPara.pdf",
+          "description": "Consulta toda la información aquí."
+        }
+      ]
+    },
+    {
+      "title": "OIT — Organización Internacional del Trabajo",
+      "content": "",
+      "list": [
+        {
+          "title": "Convenio núm. 100 sobre igualdad de remuneración, 1951",
+          "type": "link",
+          "url": "https://normlex.ilo.org/dyn/nrmlx_es/f?p=NORMLEXPUB:12100:0::NO::P12100_Ilo_Code:C100",
+          "description": "Consultar documento completo."
+        },
+        {
+          "title": "Recomendación núm. 90 sobre la igualdad de remuneración, 1951",
+          "type": "link",
+          "url": "https://normlex.ilo.org/dyn/nrmlx_es/f?p=NORMLEXPUB:12100:0::NO::P12100_ILO_CODE:R090",
+          "description": "Consultar documento completo."
+        },
+        {
+          "title": "Convenio núm. 111 sobre la discriminación (empleo y ocupación), 1958",
+          "type": "link",
+          "url": "https://normlex.ilo.org/dyn/nrmlx_es/f?p=NORMLEXPUB:12100:0::NO::P12100_Ilo_Code:C111",
+          "description": "Consultar documento completo."
+        },
+        {
+          "title": "Convenio núm. 156 sobre los trabajadores con responsabilidades familiares, 1981",
+          "type": "link",
+          "url": "https://normlex.ilo.org/dyn/nrmlx_es/f?p=NORMLEXPUB:12100:0::NO::P12100_ILO_CODE:R165",
+          "description": "Consultar documento completo."
+        },
+        {
+          "title": "Recomendación núm. 165 sobre trabajadores con responsabilidades familiares, 1965",
+          "type": "link",
+          "url": "https://normlex.ilo.org/dyn/nrmlx_fr/f?p=NORMLEXPUB:55:0::NO::P55_TYPE%2CP55_LANG%2CP55_DOCUMENT%2CP55_NODE:REC%2Ces%2CR123%2C%2FDocument",
+          "description": "Consultar documento completo."
+        },
+        {
+          "title": "Recomendación núm. 123 sobre el empleo de las mujeres con responsabilidades familiares, 1965",
+          "type": "link",
+          "url": "https://normlex.ilo.org/dyn/nrmlx_fr/f?p=NORMLEXPUB:55:0::NO::P55_TYPE,P55_LANG,P55_DOCUMENT,P55_NODE:REC,es,R123,/Document",
+          "description": "Consultar documento completo."
+        }
+      ]
+    }
+  ]
+}

@@ -5,6 +5,7 @@ import About from './pages/About';
 import Directorio from './pages/Directorio';
 import CentrosApoyo from './pages/CentrosApoyo';
 import Recursos from './pages/Recursos';
+import ContenidoDinamico from './pages/ContenidoDinamico';
 import Chat from "./pages/Chat";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path="/directorio" element={<Directorio />} />
           <Route path="/centrosapoyo" element={<CentrosApoyo />} />
           <Route path="/recursos" element={<Recursos />} />
+          <Route path="/contenido/:slug" element={<ContenidoDinamico />} />
           <Route path="/chat" element={<Chat />} />
         </Routes>
       </Layout>

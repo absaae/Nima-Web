@@ -1,0 +1,143 @@
+/* Contenedor general */
+.contenido-wrapper {
+  max-width: 70rem;
+  margin: 0 auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+}
+
+/* Títulos */
+.contenido-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #0f766e;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.contenido-section-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 1rem;
+  border-left: 6px solid #14b8a6;
+  padding-left: 0.75rem;
+}
+
+/* Texto */
+.contenido-text {
+  color: #374151;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+/* Listas */
+.contenido-list {
+  margin-left: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: #374151;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.contenido-list li {
+  list-style: disc;
+}
+
+.contenido-sublist {
+  margin-left: 2rem;
+  margin-top: 0.5rem;
+}
+
+.contenido-item-title {
+  font-weight: bold;
+  color: #1f2937;
+}
+
+.contenido-item-desc {
+  color: #4b5563;
+  margin-top: 0.25rem;
+}
+
+/* Enlaces */
+.contenido-link {
+  color: #0d9488;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.contenido-link:hover {
+  color: #0f766e;
+  text-decoration: underline;
+}
+
+/* Tarjetas */
+.contenido-card {
+  background-color: #f0fdfa;
+  border-left: 4px solid #0d9488;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+/* Bloque de pasos */
+.contenido-pasos-list {
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contenido-paso-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  background: #fce7f3;
+}
+
+.contenido-paso-num {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  background: #ec4899;
+  color: white;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Estilos para los items de lista clickeables */
+.contenido-list-item-button {
+  border: 2px solid transparent;
+}
+
+.contenido-list-item-button:hover {
+  border-color: #0d9488;
+  background-color: #f0fdfa;
+}
+
+.contenido-list-item-link {
+  border: 2px solid transparent;
+}
+
+.contenido-list-item-link:hover {
+  border-color: #2563eb;
+  background-color: #eff6ff;
+}
+
+.contenido-item-title {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.contenido-item-desc {
+  color: #6b7280;
+  font-size: 0.95rem;
+}

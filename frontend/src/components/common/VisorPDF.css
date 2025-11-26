@@ -1,0 +1,155 @@
+
+.visor-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 1rem;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.visor-container {
+  background: white;
+  border-radius: 1rem;
+  width: 100%;
+  max-width: 1200px;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.visor-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+  background: linear-gradient(to right, #f9fafb, #ffffff);
+}
+
+.visor-title h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0;
+}
+
+.visor-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.visor-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.visor-button-download {
+  background-color: #14b8a6;
+  color: white;
+}
+
+.visor-button-download:hover {
+  background-color: #0d9488;
+}
+
+.visor-button-external {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.visor-button-external:hover {
+  background-color: #2563eb;
+}
+
+.visor-button-close {
+  background-color: #ef4444;
+  color: white;
+}
+
+.visor-button-close:hover {
+  background-color: #dc2626;
+}
+
+.visor-content {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.visor-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.visor-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #6b7280;
+  font-size: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .visor-overlay {
+    padding: 0;
+  }
+  
+  .visor-container {
+    height: 100vh;
+    border-radius: 0;
+    max-width: 100%;
+  }
+  
+  .visor-header {
+    padding: 0.75rem 1rem;
+  }
+  
+  .visor-title h3 {
+    font-size: 1rem;
+  }
+  
+  .visor-button {
+    width: 2rem;
+    height: 2rem;
+  }
+}
